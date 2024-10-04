@@ -8,7 +8,7 @@ from title_page import generate_title_page_html, save_title_page_html
 from copywright import generate_copyright_page_html, save_copyright_page_html
 
 
-def get_response(chapter, font_size, font_style):
+def get_response(chapter, font_style):
     # Set up OpenAI API client
     api_key = st.secrets["Openai_api"]
     client = OpenAI(
