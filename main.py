@@ -88,7 +88,7 @@ def get_response(chapter, font_style):
     
     
         Here is the target chapter: <<CHAPTER_TEXT>> """
-        prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<lineheight>>", line_height_val)
+        prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style)
 
         chat_completion_1 = client.chat.completions.create(
             messages=[
@@ -104,8 +104,7 @@ def get_response(chapter, font_style):
         response_1 = chat_completion_1.choices[0].message.content
         prompt_template_2 = """
         You are an expert book formatter.
-        Continue formatting the book chapter into HTML following the same styles as before. Do not include the <!DOCTYPE html> declaration, <html>, <head>, or <body> tags. Start directly with the paragraph tags and ensure consistency in formatting with the previous part.
-        Line height = <<lineheight>>
+        Continue formatting the book chapter into HTML following the same styles as before. Do not include the <!DOCTYPE html> declaration, <html>,     <head>, or <body> tags. Start directly with the paragraph tags and ensure consistency in formatting with the previous part.
         Include these features in html:
         1. Paragraph Formatting
         Indentation: Use a small indent (about 1 em) for the first line of each paragraph, or opt for a larger spacing between paragraphs if not using indentation.
@@ -122,11 +121,11 @@ def get_response(chapter, font_style):
         Keep this in mind : Left and Right margins are minimum.
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
-
+        12. The font style should be : <<font_style>>
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
-        prompt_2 = prompt_template_2.replace("<<CHAPTER_TEXT>>", second_part).replace("<<fontsize>>", font_size_px).replace("<<lineheight>>", line_height_val)
+        prompt_2 = prompt_template_2.replace("<<CHAPTER_TEXT>>", second_part).replace("<<font_style>>", font_style)
 
         chat_completion_2 = client.chat.completions.create(
             messages=[
