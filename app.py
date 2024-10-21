@@ -32,7 +32,7 @@ st.header("Enter Chapter Details")
 for i in range(1, num_chapters + 1):
     with st.expander(f"Chapter {i}"):
         chapter_title = st.text_input(f'Chapter {i} Title:', value=f'Chapter {i}', key=f'chapter_title_{i}')
-        chapter_text = st.text_area(f'Enter the Chapter {i} Text:', height=200, key=f'chapter_text_{i}')
+        chapter_text = st.text_area(f'Enter the Chapter {i} Text (along with chapter title):', height=200, key=f'chapter_text_{i}')
         chapters.append({
             'title': chapter_title,
             'text': chapter_text,
