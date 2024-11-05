@@ -38,8 +38,9 @@ def get_response(chapter, font_style):
     10. Do not write anything else like ```html in the response, directly start with the doctype line.
     11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
     12. The chapter heading should be centrally aligned and apply Heading 1 to chapter titles
-    13. There should be some additional space between the chapter heading and the first paragraph.
-    14. The font style should be : <<font_style>>
+    13. The chapter heading can be anything and can also include just special characters like Chapter ^. Do not make any changes to the provided chapter heading and use the heading as it is given only.
+    14. There should be some additional space between the chapter heading and the first paragraph.
+    15. The font style should be : <<font_style>>
     
     
         Here is the target chapter: <<CHAPTER_TEXT>>
@@ -81,8 +82,9 @@ def get_response(chapter, font_style):
     10. Do not write anything else like ```html in the response, directly start with the doctype line.
     11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
     12. The chapter heading should be centrally aligned and apply Heading 1 to chapter titles
-    13. There should be some additional space between the chapter heading and the first paragraph.
-    14. The font style should be : <<font_style>>
+    13. The chapter heading can be anything and can also include just special characters like Chapter ^. Do not make any changes to the provided chapter heading and use the heading as it is given only.
+    14. There should be some additional space between the chapter heading and the first paragraph.
+    15. The font style should be : <<font_style>>
     
     
         Here is the target chapter: <<CHAPTER_TEXT>> """
