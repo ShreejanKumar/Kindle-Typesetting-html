@@ -267,7 +267,7 @@ def get_response(chapter, font_style):
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
-        prompt_3 = prompt_template_3.replace("<<CHAPTER_TEXT>>", second_part).replace("<<font_style>>", font_style)
+        prompt_3 = prompt_template_3.replace("<<CHAPTER_TEXT>>", third_part).replace("<<font_style>>", font_style)
 
         chat_completion_3 = client.chat.completions.create(
             messages=[
@@ -406,7 +406,7 @@ def get_response(chapter, font_style):
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
-        prompt_3 = prompt_template_3.replace("<<CHAPTER_TEXT>>", second_part).replace("<<font_style>>", font_style)
+        prompt_3 = prompt_template_3.replace("<<CHAPTER_TEXT>>", third_part).replace("<<font_style>>", font_style)
 
         chat_completion_3 = client.chat.completions.create(
             messages=[
@@ -444,7 +444,7 @@ def get_response(chapter, font_style):
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
-        prompt_4 = prompt_template_4.replace("<<CHAPTER_TEXT>>", second_part).replace("<<font_style>>", font_style)
+        prompt_4 = prompt_template_4.replace("<<CHAPTER_TEXT>>", fourth_part).replace("<<font_style>>", font_style)
 
         chat_completion_4 = client.chat.completions.create(
             messages=[
