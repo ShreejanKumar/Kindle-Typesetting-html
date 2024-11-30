@@ -38,10 +38,11 @@ def get_response(chapter, font_style):
     10. Do not write anything else like ```html in the response, directly start with the doctype line.
     11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
     12. The chapter heading should be centrally aligned and apply Heading 1 to chapter titles.
-    13. The chapter heading can be anything and can also include just special characters like Chapter ^. Do not make any changes to the provided chapter heading and use the heading as it is given only.
-    14. There should be some additional space between the chapter heading and the first paragraph.
-    15. The font style should be : <<font_style>>
-    16. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them.
+    13. The chapter heading can be anything like just a number and can also include just special characters like Chapter ^. 
+    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given.
+    15. There should be some additional space between the chapter heading and the first paragraph.
+    16. The font style should be : <<font_style>>
+    17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
     
         Here is the target chapter: <<CHAPTER_TEXT>>
     """
@@ -84,10 +85,11 @@ def get_response(chapter, font_style):
     10. Do not write anything else like ```html in the response, directly start with the doctype line.
     11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
     12. The chapter heading should be centrally aligned and apply Heading 1 to chapter titles.
-    13. The chapter heading can be anything and can also include just special characters like Chapter ^. Do not make any changes to the provided chapter heading and use the heading as it is given only.
-    14. There should be some additional space between the chapter heading and the first paragraph.
-    15. The font style should be : <<font_style>>
-    16. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them.
+    13. The chapter heading can be anything like just a number and can also include just special characters like Chapter ^. 
+    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given.
+    15. There should be some additional space between the chapter heading and the first paragraph.
+    16. The font style should be : <<font_style>>
+    17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
     
     
         Here is the target chapter: <<CHAPTER_TEXT>>
@@ -169,7 +171,8 @@ def get_response(chapter, font_style):
         first_part = chapter[:split_pos_1 + 1]
         second_part = chapter[split_pos_1 + 1 : split_pos_2 + 1]
         third_part = chapter[split_pos_2 + 1:]
-        prompt_template_1 = """You are an expert book formatter.
+        prompt_template_1 = """
+        You are an expert book formatter.
     This is a book chapter. your job is to output a typesetted file (USING HTML) which can be converted to a epub book. So ensure that this book is formatted beautifully following all rules of formatting books. The book should be able to be read easily in a web browser. Include these features in html:
     1. Paragraph Formatting
     Indentation: Use a small indent (about 1 em) for the first line of each paragraph, or opt for a larger spacing between paragraphs if not using indentation.
@@ -186,11 +189,12 @@ def get_response(chapter, font_style):
     Keep this in mind : Left and Right margins are minimum.
     10. Do not write anything else like ```html in the response, directly start with the doctype line.
     11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
-    12. The chapter heading should be centrally aligned and apply Heading 1 to chapter titles
-    13. The chapter heading can be anything and can also include just special characters like Chapter ^. Do not make any changes to the provided chapter heading and use the heading as it is given only.
-    14. There should be some additional space between the chapter heading and the first paragraph.
-    15. The font style should be : <<font_style>>
-    16. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them.
+    12. The chapter heading should be centrally aligned and apply Heading 1 to chapter titles.
+    13. The chapter heading can be anything like just a number and can also include just special characters like Chapter ^. 
+    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given.
+    15. There should be some additional space between the chapter heading and the first paragraph.
+    16. The font style should be : <<font_style>>
+    17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
     
     
         Here is the target chapter: <<CHAPTER_TEXT>> """
@@ -228,7 +232,6 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
-        13. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them.
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
@@ -267,11 +270,10 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
-        13. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them.
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
-        prompt_3 = prompt_template_3.replace("<<CHAPTER_TEXT>>", third_part).replace("<<font_style>>", font_style)
+        prompt_3 = prompt_template_3.replace("<<CHAPTER_TEXT>>", second_part).replace("<<font_style>>", font_style)
 
         chat_completion_3 = client.chat.completions.create(
             messages=[
@@ -311,7 +313,8 @@ def get_response(chapter, font_style):
         second_part = chapter[split_pos_1 + 1 : split_pos_2 + 1]
         third_part = chapter[split_pos_2 + 1 : split_pos_3 + 1]
         fourth_part = chapter[split_pos_3 + 1:]
-        prompt_template_1 = """You are an expert book formatter.
+        prompt_template_1 = """
+        You are an expert book formatter.
     This is a book chapter. your job is to output a typesetted file (USING HTML) which can be converted to a epub book. So ensure that this book is formatted beautifully following all rules of formatting books. The book should be able to be read easily in a web browser. Include these features in html:
     1. Paragraph Formatting
     Indentation: Use a small indent (about 1 em) for the first line of each paragraph, or opt for a larger spacing between paragraphs if not using indentation.
@@ -328,12 +331,12 @@ def get_response(chapter, font_style):
     Keep this in mind : Left and Right margins are minimum.
     10. Do not write anything else like ```html in the response, directly start with the doctype line.
     11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
-    12. The chapter heading should be centrally aligned and apply Heading 1 to chapter titles
-    13. The chapter heading can be anything and can also include just special characters like Chapter ^. Do not make any changes to the provided chapter heading and use the heading as it is given only.
-    14. There should be some additional space between the chapter heading and the first paragraph.
-    15. The font style should be : <<font_style>>
-    16. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them.
-    
+    12. The chapter heading should be centrally aligned and apply Heading 1 to chapter titles.
+    13. The chapter heading can be anything like just a number and can also include just special characters like Chapter ^. 
+    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given.
+    15. There should be some additional space between the chapter heading and the first paragraph.
+    16. The font style should be : <<font_style>>
+    17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
     
         Here is the target chapter: <<CHAPTER_TEXT>> """
         prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style)
@@ -370,7 +373,6 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
-        13. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them.
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
@@ -409,7 +411,6 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
-        13. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them.
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
@@ -448,7 +449,6 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
-        13. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them.
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
@@ -488,3 +488,4 @@ def save_response(response, chapter_number):
     with open(html_pth, 'w', encoding='utf-8') as file:
         file.write(response)
     return html_pth
+    
