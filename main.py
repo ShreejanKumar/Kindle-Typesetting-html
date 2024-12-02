@@ -43,6 +43,7 @@ def get_response(chapter, font_style):
     15. There should be some additional space between the chapter heading and the first paragraph.
     16. The font style should be : <<font_style>>
     17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
+    18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
     
         Here is the target chapter: <<CHAPTER_TEXT>>
     """
@@ -90,7 +91,7 @@ def get_response(chapter, font_style):
     15. There should be some additional space between the chapter heading and the first paragraph.
     16. The font style should be : <<font_style>>
     17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
-    
+    18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
     
         Here is the target chapter: <<CHAPTER_TEXT>>
     """
@@ -128,6 +129,7 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
+        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
@@ -195,7 +197,7 @@ def get_response(chapter, font_style):
     15. There should be some additional space between the chapter heading and the first paragraph.
     16. The font style should be : <<font_style>>
     17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
-    
+    18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
     
         Here is the target chapter: <<CHAPTER_TEXT>> """
         prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style)
@@ -232,6 +234,8 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
+        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
+
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
@@ -270,6 +274,8 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
+        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
+
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
@@ -337,6 +343,7 @@ def get_response(chapter, font_style):
     15. There should be some additional space between the chapter heading and the first paragraph.
     16. The font style should be : <<font_style>>
     17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
+    18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
     
         Here is the target chapter: <<CHAPTER_TEXT>> """
         prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style)
@@ -373,6 +380,8 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
+        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
+
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
@@ -411,6 +420,8 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
+        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
+
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
@@ -449,6 +460,8 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
+        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
+
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
