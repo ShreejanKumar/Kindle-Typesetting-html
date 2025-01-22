@@ -1,7 +1,9 @@
 import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from main import get_response, save_response
+from main import get_response, save_response, html_to_plain_text_with_newlines, extract_styled_text_with_positions, add_styled_tags
+from streamlit_quill import st_quill
+import json
 
 # Setup Google Sheets API client using credentials from secrets
 def get_gspread_client():
@@ -126,10 +128,13 @@ if st.session_state['authenticated'] and not st.session_state['reset_mode']:
     for i in range(1, num_chapters + 1):
         with st.expander(f"Chapter {i}"):
             chapter_title = st.text_input(f'Chapter {i} Title:', value=f'Chapter {i}', key=f'chapter_title_{i}')
-            chapter_text = st.text_area(f'Enter the Chapter {i} Text (along with title):', height=200, key=f'chapter_text_{i}')
+            raw_data = st_quill(placeholder="Enter your text with formatting", key="editor", html=True)
+            chapter_text = html_to_plain_text_with_newlines(raw_data)
+            styled_words = extract_styled_text_with_positions(raw_data)
+            chapter_text_with_styles = add_styled_tags(chapter_text, styled_words)
             chapters.append({
                 'title': chapter_title,
-                'text': chapter_text,
+                'text': chapter_text_with_styles,
                 'number': i
             })
 
