@@ -43,7 +43,8 @@ def get_response(chapter, font_style):
     15. There should be some additional space between the chapter heading and the first paragraph.
     16. The font style should be : <<font_style>>
     17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
-    18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
+    18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
+    19. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
     
         Here is the target chapter: <<CHAPTER_TEXT>>
     """
@@ -91,7 +92,8 @@ def get_response(chapter, font_style):
     15. There should be some additional space between the chapter heading and the first paragraph.
     16. The font style should be : <<font_style>>
     17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
-    18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
+    18.When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
+    19. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
     
         Here is the target chapter: <<CHAPTER_TEXT>>
     """
@@ -129,7 +131,9 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
-        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
+        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
+        14. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
+        
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
@@ -197,7 +201,8 @@ def get_response(chapter, font_style):
     15. There should be some additional space between the chapter heading and the first paragraph.
     16. The font style should be : <<font_style>>
     17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
-    18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
+    18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
+    19. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
     
         Here is the target chapter: <<CHAPTER_TEXT>> """
         prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style)
@@ -234,8 +239,9 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
-        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
-
+        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
+        14. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
+        
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
@@ -274,8 +280,9 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
-        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
-
+        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
+        14. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
+        
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
@@ -343,7 +350,8 @@ def get_response(chapter, font_style):
     15. There should be some additional space between the chapter heading and the first paragraph.
     16. The font style should be : <<font_style>>
     17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
-    18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
+    18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
+    19. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
     
         Here is the target chapter: <<CHAPTER_TEXT>> """
         prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style)
@@ -380,8 +388,9 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
-        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
-
+        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
+        14. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
+        
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
@@ -420,8 +429,9 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
-        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
-
+        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
+        14. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
+        
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
         """
@@ -460,7 +470,8 @@ def get_response(chapter, font_style):
         10. Do not write anything else like ```html in the response, directly start with the paragraph tags.
         11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
         12. The font style should be : <<font_style>>
-        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text.
+        13. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
+        14. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
 
         Here is the continuation of the chapter:
         <<CHAPTER_TEXT>>
@@ -493,7 +504,6 @@ def get_response(chapter, font_style):
             merged_html = (response_1[:html_close_index] + "\n" + response_2 + "\n" + response_3 + "\n" + response_4 + "\n" + response_1[html_close_index:])
         else:
             merged_html = response_1 + "\n" + response_2 + "\n" + response_3 + "\n" + response_4
-            
         return merged_html
 
 def save_response(response, chapter_number):
@@ -501,4 +511,86 @@ def save_response(response, chapter_number):
     with open(html_pth, 'w', encoding='utf-8') as file:
         file.write(response)
     return html_pth
+
+
+
+def extract_styled_text_with_positions(html):
+    """
+    Extract styled text (italicized <em> and bold <strong>) from the HTML along with their positions.
+    Returns a list of dictionaries containing the text, style, and its start and end positions.
+    """
+    soup = BeautifulSoup(html, "html.parser")
+    plain_text = html_to_plain_text_with_newlines(html)
+    styled_text_positions = []
+
+    # Extract italicized text
+    for em in soup.find_all("em"):
+        italic_text = em.get_text()
+        start_idx = plain_text.find(italic_text)
+        while start_idx != -1:
+            match_plain = plain_text[start_idx:start_idx + len(italic_text)]
+            if match_plain == italic_text:
+                styled_text_positions.append({
+                    "text": italic_text,
+                    "style": "Italics",
+                    "start": start_idx,
+                    "end": start_idx + len(italic_text)
+                })
+                break
+            start_idx = plain_text.find(italic_text, start_idx + 1)
     
+    # Extract bold text
+    for strong in soup.find_all("strong"):
+        bold_text = strong.get_text()
+        start_idx = plain_text.find(bold_text)
+        while start_idx != -1:
+            match_plain = plain_text[start_idx:start_idx + len(bold_text)]
+            if match_plain == bold_text:
+                styled_text_positions.append({
+                    "text": bold_text,
+                    "style": "Bold",
+                    "start": start_idx,
+                    "end": start_idx + len(bold_text)
+                })
+                break
+            start_idx = plain_text.find(bold_text, start_idx + 1)
+    
+    # Sort by start position to ensure correct processing order
+    styled_text_positions.sort(key=lambda x: x['start'])
+    return styled_text_positions
+    
+
+def html_to_plain_text_with_newlines(html):
+        """
+        Convert HTML to plain text while preserving new paragraphs as line breaks.
+        """
+        soup = BeautifulSoup(html, "html.parser")
+        lines = []
+        for paragraph in soup.find_all("p"):  # Find all paragraph tags
+            lines.append(paragraph.get_text())  # Extract text from each paragraph
+        return "\n".join(lines)
+
+
+def add_styled_tags(chapter_text, styled_words):
+    """
+    Add <Italics> and <Bold> tags before and after the respective styled text in the chapter_text.
+    """
+    offset = 0  # To account for the changing positions due to added tags
+    for word in styled_words:
+        start = word['start'] + offset
+        end = word['end'] + offset
+        if word['style'] == "Italics":
+            chapter_text = (
+                chapter_text[:start] + "<Italics>" +
+                chapter_text[start:end] + "</Italics>" +
+                chapter_text[end:]
+            )
+            offset += len("<Italics></Italics>")
+        elif word['style'] == "Bold":
+            chapter_text = (
+                chapter_text[:start] + "<Bold>" +
+                chapter_text[start:end] + "</Bold>" +
+                chapter_text[end:]
+            )
+            offset += len("<Bold></Bold>")
+    return chapter_text
