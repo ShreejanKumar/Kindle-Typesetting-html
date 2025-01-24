@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from ebooklib import epub
 
 
-def get_response(chapter, font_style):
+def get_response(chapter, title, font_style):
     # Set up OpenAI API client
     api_key = st.secrets["Openai_api"]
     client = OpenAI(
