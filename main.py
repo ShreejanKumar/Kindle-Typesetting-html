@@ -48,7 +48,7 @@ def get_response(chapter, title, font_style):
     
         Here is the target chapter text. Do not include any of this in the heading. The chapter title is already given above. Directly start the p tag here.: <<CHAPTER_TEXT>>
     """
-        prompt = prompt_template.replace("<<CHAPTER_TEXT>>", chapter).replace("<<font_style>>", font_style)
+        prompt = prompt_template.replace("<<CHAPTER_TEXT>>", chapter).replace("<<font_style>>", font_style).replace("<<title>>", title)
         chat_completion = client.chat.completions.create(
             messages=[
                 {
@@ -97,7 +97,7 @@ def get_response(chapter, title, font_style):
     
         Here is the target chapter text. Do not include any of this in the heading. The chapter title is already given above. Directly start the p tag here.: <<CHAPTER_TEXT>>
     """
-        prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style)
+        prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style).replace("<<title>>", title)
 
         chat_completion_1 = client.chat.completions.create(
             messages=[
@@ -205,7 +205,7 @@ def get_response(chapter, title, font_style):
     19. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
     
         Here is the target chapter text. Do not include any of this in the heading. The chapter title is already given above. Directly start the p tag here.: <<CHAPTER_TEXT>> """
-        prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style)
+        prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style).replace("<<title>>", title)
 
         chat_completion_1 = client.chat.completions.create(
             messages=[
@@ -354,7 +354,7 @@ def get_response(chapter, title, font_style):
     19. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
     
         Here is the target chapter text. Do not include any of this in the heading. The chapter title is already given above. Directly start the p tag here.: <<CHAPTER_TEXT>> """
-        prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style)
+        prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style).replace("<<title>>", title)
 
         chat_completion_1 = client.chat.completions.create(
             messages=[
