@@ -574,34 +574,23 @@ def html_to_plain_text_with_newlines(html):
 def add_styled_tags(chapter_text, styled_words):
     """
     Add <Italics> and <Bold> tags before and after the respective styled text in the chapter_text.
-    Handles overlapping styles (e.g., both Italics and Bold).
     """
-    offset = 0  # To adjust indices as tags are added
-    for word in sorted(styled_words, key=lambda x: x['start']):
+    offset = 0  # To account for the changing positions due to added tags
+    for word in styled_words:
         start = word['start'] + offset
         end = word['end'] + offset
-
-        # Determine combined styles
-        prefix = ""
-        suffix = ""
-
-        if "Italics" in word['style']:
-            prefix += "<Italics>"
-            suffix = "</Italics>" + suffix
-
-        if "Bold" in word['style']:
-            prefix += "<Bold>"
-            suffix = "</Bold>" + suffix
-
-        # Insert the tags into the text
-        chapter_text = (
-            chapter_text[:start] + prefix +
-            chapter_text[start:end] + suffix +
-            chapter_text[end:]
-        )
-        
-        # Adjust the offset by the length of added tags
-        offset += len(prefix) + len(suffix)
-
+        if word['style'] == "Italics":
+            chapter_text = (
+                chapter_text[:start] + "<Italics>" +
+                chapter_text[start:end] + "</Italics>" +
+                chapter_text[end:]
+            )
+            offset += len("<Italics></Italics>")
+        elif word['style'] == "Bold":
+            chapter_text = (
+                chapter_text[:start] + "<Bold>" +
+                chapter_text[start:end] + "</Bold>" +
+                chapter_text[end:]
+            )
+            offset += len("<Bold></Bold>")
     return chapter_text
-
