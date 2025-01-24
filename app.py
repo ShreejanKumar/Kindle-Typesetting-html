@@ -127,7 +127,7 @@ if st.session_state['authenticated'] and not st.session_state['reset_mode']:
 
     for i in range(1, num_chapters + 1):
         with st.expander(f"Chapter {i}"):
-            chapter_title = st.text_input(f'Chapter {i} Title:', value=f'Chapter {i}', key=f'chapter_title_{i}')
+            chapter_title = st.text_area(f'Chapter {i} Title:', value=f'Chapter {i}', key=f'chapter_title_{i}')
             raw_data = st_quill(placeholder="Enter your text with formatting", key=f'editor_{i}', html=True)
             chapter_text = html_to_plain_text_with_newlines(raw_data)
             styled_words = extract_styled_text_with_positions(raw_data)
@@ -184,6 +184,6 @@ if st.session_state['authenticated'] and not st.session_state['reset_mode']:
             st.download_button(
                 label=f"Download Chapter {file['number']} HTML",
                 data=file['content'],
-                file_name=f"{file['title']}.html",
+                file_name=f"{file['number']}.html",
                 mime="text/html"
             )
