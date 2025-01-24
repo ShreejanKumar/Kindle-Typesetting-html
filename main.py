@@ -39,7 +39,7 @@ def get_response(chapter, title, font_style):
     11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
     12. The chapter heading should be centrally aligned and apply Heading 1 to chapter titles.
     13. The chapter heading can be anything like just a number and can also include just special characters like Chapter ^. 
-    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given. Here is the chapter title which can also have the chapter subtitle sometimes so format accordingly. <<title>>
+    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given. Here is the chapter title which can also have the chapter subtitle sometimes so start the subtitle on the next line and format accordingly. <<title>>
     15. There should be some additional space between the chapter heading and the first paragraph.
     16. The font style should be : <<font_style>>
     17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
@@ -88,7 +88,7 @@ def get_response(chapter, title, font_style):
     11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
     12. The chapter heading should be centrally aligned and apply Heading 1 to chapter titles.
     13. The chapter heading can be anything like just a number and can also include just special characters like Chapter ^. 
-    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given. Here is the chapter title which can also have the chapter subtitle sometimes so format accordingly. <<title>>
+    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given. Here is the chapter title which can also have the chapter subtitle sometimes so start the subtitle on the next line and format accordingly. <<title>>
     15. There should be some additional space between the chapter heading and the first paragraph.
     16. The font style should be : <<font_style>>
     17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
@@ -197,7 +197,7 @@ def get_response(chapter, title, font_style):
     11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
     12. The chapter heading should be centrally aligned and apply Heading 1 to chapter titles.
     13. The chapter heading can be anything like just a number and can also include just special characters like Chapter ^. 
-    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given. Here is the chapter title which can also have the chapter subtitle sometimes so format accordingly. <<title>>
+    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given. Here is the chapter title which can also have the chapter subtitle sometimes so start the subtitle on the next line and format accordingly. <<title>>
     15. There should be some additional space between the chapter heading and the first paragraph.
     16. The font style should be : <<font_style>>
     17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
@@ -346,7 +346,7 @@ def get_response(chapter, title, font_style):
     11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
     12. The chapter heading should be centrally aligned and apply Heading 1 to chapter titles.
     13. The chapter heading can be anything like just a number and can also include just special characters like Chapter ^. 
-    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given. Here is the chapter title which can also have the chapter subtitle sometimes so format accordingly. <<title>>
+    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given. Here is the chapter title which can also have the chapter subtitle sometimes so start the subtitle on the next line and format accordingly. <<title>>
     15. There should be some additional space between the chapter heading and the first paragraph.
     16. The font style should be : <<font_style>>
     17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
