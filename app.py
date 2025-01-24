@@ -132,6 +132,7 @@ if st.session_state['authenticated'] and not st.session_state['reset_mode']:
             chapter_text = html_to_plain_text_with_newlines(raw_data)
             styled_words = extract_styled_text_with_positions(raw_data)
             chapter_text_with_styles = add_styled_tags(chapter_text, styled_words)
+            st.write(chapter_text_with_styles)
             chapters.append({
                 'title': chapter_title,
                 'text': chapter_text_with_styles,
