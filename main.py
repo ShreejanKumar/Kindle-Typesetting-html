@@ -39,15 +39,16 @@ def get_response(chapter, title, font_style):
     11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
     12. The chapter heading should be centrally aligned and apply Heading 1 to chapter titles.
     13. The chapter heading can be anything like just a number and can also include just special characters like Chapter ^. 
-    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given. Here is the chapter title which can also have the chapter subtitle sometimes so start the subtitle on the next line and format accordingly. <<title>>
+    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given.
+    14.1. The heading can also have a subheading or a subtitle on the next line. If it is present then insert it on the next line centrally aligned with the title and using Heading 2. Here is the title: <<title>>
     15. There should be some additional space between the chapter heading and the first paragraph.
     16. The font style should be : <<font_style>>
     17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
     18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
     19. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
-    
-        Here is the target chapter text. Do not include any of this in the heading. The chapter title is already given above. Directly start the p tag here.: <<CHAPTER_TEXT>>
-    """
+    20. Sometimes the tags mifht be messy like this <Bold><Italics>I</Bold>llahabas</Italics> or <Bold>Sunday, 7 Ramadan, 1437 A.H.</Bold> <Bold><</Bold>Italics> </Italics>. This would just mean that the entire text in between is both bold and italics so insert the tags in the html accordingly. There may be some stray angle brackets like <, >. Do not include them in the text and just delete them.
+        Here is the target chapter text. Do not include any of this in the heading. The chapter title is already given above. Directly start the p tag here.: <<CHAPTER_TEXT>> """
+        
         prompt = prompt_template.replace("<<CHAPTER_TEXT>>", chapter).replace("<<font_style>>", font_style).replace("<<title>>", title)
         chat_completion = client.chat.completions.create(
             messages=[
@@ -88,16 +89,17 @@ def get_response(chapter, title, font_style):
     11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
     12. The chapter heading should be centrally aligned and apply Heading 1 to chapter titles.
     13. The chapter heading can be anything like just a number and can also include just special characters like Chapter ^. 
-    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given. Here is the chapter title which can also have the chapter subtitle sometimes so start the subtitle on the next line and format accordingly. <<title>>
+    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given.
+    14.1. The heading can also have a subheading or a subtitle on the next line. If it is present then insert it on the next line centrally aligned with the title and using Heading 2. Here is the title: <<title>>
     15. There should be some additional space between the chapter heading and the first paragraph.
     16. The font style should be : <<font_style>>
     17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
-    18.When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
+    18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
     19. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
-    
-        Here is the target chapter text. Do not include any of this in the heading. The chapter title is already given above. Directly start the p tag here.: <<CHAPTER_TEXT>>
-    """
-        prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style).replace("<<title>>", title)
+    20. Sometimes the tags mifht be messy like this <Bold><Italics>I</Bold>llahabas</Italics> or <Bold>Sunday, 7 Ramadan, 1437 A.H.</Bold> <Bold><</Bold>Italics> </Italics>. This would just mean that the entire text in between is both bold and italics so insert the tags in the html accordingly. There may be some stray angle brackets like <, >. Do not include them in the text and just delete them.
+        Here is the target chapter text. Do not include any of this in the heading. The chapter title is already given above. Directly start the p tag here.: <<CHAPTER_TEXT>> """
+        
+        prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style)
 
         chat_completion_1 = client.chat.completions.create(
             messages=[
@@ -178,7 +180,8 @@ def get_response(chapter, title, font_style):
         second_part = chapter[split_pos_1 + 1 : split_pos_2 + 1]
         third_part = chapter[split_pos_2 + 1:]
         prompt_template_1 = """
-        You are an expert book formatter.
+    
+    You are an expert book formatter.
     This is a book chapter. your job is to output a typesetted file (USING HTML) which can be converted to a epub book. So ensure that this book is formatted beautifully following all rules of formatting books. The book should be able to be read easily in a web browser. Include these features in html:
     1. Paragraph Formatting
     Indentation: Use a small indent (about 1 em) for the first line of each paragraph, or opt for a larger spacing between paragraphs if not using indentation.
@@ -197,15 +200,17 @@ def get_response(chapter, title, font_style):
     11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
     12. The chapter heading should be centrally aligned and apply Heading 1 to chapter titles.
     13. The chapter heading can be anything like just a number and can also include just special characters like Chapter ^. 
-    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given. Here is the chapter title which can also have the chapter subtitle sometimes so start the subtitle on the next line and format accordingly. <<title>>
+    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given.
+    14.1. The heading can also have a subheading or a subtitle on the next line. If it is present then insert it on the next line centrally aligned with the title and using Heading 2. Here is the title: <<title>>
     15. There should be some additional space between the chapter heading and the first paragraph.
     16. The font style should be : <<font_style>>
     17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
     18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
     19. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
-    
+    20. Sometimes the tags mifht be messy like this <Bold><Italics>I</Bold>llahabas</Italics> or <Bold>Sunday, 7 Ramadan, 1437 A.H.</Bold> <Bold><</Bold>Italics> </Italics>. This would just mean that the entire text in between is both bold and italics so insert the tags in the html accordingly. There may be some stray angle brackets like <, >. Do not include them in the text and just delete them.
         Here is the target chapter text. Do not include any of this in the heading. The chapter title is already given above. Directly start the p tag here.: <<CHAPTER_TEXT>> """
-        prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style).replace("<<title>>", title)
+        
+        prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style)
 
         chat_completion_1 = client.chat.completions.create(
             messages=[
@@ -327,7 +332,8 @@ def get_response(chapter, title, font_style):
         third_part = chapter[split_pos_2 + 1 : split_pos_3 + 1]
         fourth_part = chapter[split_pos_3 + 1:]
         prompt_template_1 = """
-        You are an expert book formatter.
+    
+    You are an expert book formatter.
     This is a book chapter. your job is to output a typesetted file (USING HTML) which can be converted to a epub book. So ensure that this book is formatted beautifully following all rules of formatting books. The book should be able to be read easily in a web browser. Include these features in html:
     1. Paragraph Formatting
     Indentation: Use a small indent (about 1 em) for the first line of each paragraph, or opt for a larger spacing between paragraphs if not using indentation.
@@ -346,15 +352,17 @@ def get_response(chapter, title, font_style):
     11. No need to bold names and use italics for even single words in sentences that are in other languages like Hindi or spanish.
     12. The chapter heading should be centrally aligned and apply Heading 1 to chapter titles.
     13. The chapter heading can be anything like just a number and can also include just special characters like Chapter ^. 
-    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given. Here is the chapter title which can also have the chapter subtitle sometimes so start the subtitle on the next line and format accordingly. <<title>>
+    14. Do not make any changes to the provided chapter heading and use the heading as it is given only. Do not write the word chapter before the heading if it is not given.
+    14.1. The heading can also have a subheading or a subtitle on the next line. If it is present then insert it on the next line centrally aligned with the title and using Heading 2. Here is the title: <<title>>
     15. There should be some additional space between the chapter heading and the first paragraph.
     16. The font style should be : <<font_style>>
     17. The chapter can also be a collection of poems. For these format the lines accordingly so that each line ends in the original way and the next line starts after that. Start a new poem from a new page. Each poem will have a seperate subheading apart from the name of the chapter, so use Heading 3 for them. If the heading is not given do not randomly insert headings like 'poem 1' or 'poem section'.
     18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
     19. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
-    
+    20. Sometimes the tags mifht be messy like this <Bold><Italics>I</Bold>llahabas</Italics> or <Bold>Sunday, 7 Ramadan, 1437 A.H.</Bold> <Bold><</Bold>Italics> </Italics>. This would just mean that the entire text in between is both bold and italics so insert the tags in the html accordingly. There may be some stray angle brackets like <, >. Do not include them in the text and just delete them.
         Here is the target chapter text. Do not include any of this in the heading. The chapter title is already given above. Directly start the p tag here.: <<CHAPTER_TEXT>> """
-        prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style).replace("<<title>>", title)
+        
+        prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style)
 
         chat_completion_1 = client.chat.completions.create(
             messages=[
@@ -514,6 +522,18 @@ def save_response(response, chapter_number):
 
 
 
+
+def html_to_plain_text_with_newlines(html):
+        """
+        Convert HTML to plain text while preserving new paragraphs as line breaks.
+        """
+        soup = BeautifulSoup(html, "html.parser")
+        lines = []
+        for paragraph in soup.find_all("p"):  # Find all paragraph tags
+            lines.append(paragraph.get_text())  # Extract text from each paragraph
+        return "\n".join(lines)
+
+
 def extract_styled_text_with_positions(html):
     """
     Extract styled text (italicized <em> and bold <strong>) from the HTML along with their positions.
@@ -522,7 +542,6 @@ def extract_styled_text_with_positions(html):
     soup = BeautifulSoup(html, "html.parser")
     plain_text = html_to_plain_text_with_newlines(html)
     styled_text_positions = []
-
     # Extract italicized text
     for em in soup.find_all("em"):
         italic_text = em.get_text()
@@ -538,7 +557,7 @@ def extract_styled_text_with_positions(html):
                 })
                 break
             start_idx = plain_text.find(italic_text, start_idx + 1)
-    
+
     # Extract bold text
     for strong in soup.find_all("strong"):
         bold_text = strong.get_text()
@@ -554,43 +573,35 @@ def extract_styled_text_with_positions(html):
                 })
                 break
             start_idx = plain_text.find(bold_text, start_idx + 1)
-    
+
     # Sort by start position to ensure correct processing order
     styled_text_positions.sort(key=lambda x: x['start'])
     return styled_text_positions
+
     
 
-def html_to_plain_text_with_newlines(html):
-        """
-        Convert HTML to plain text while preserving new paragraphs as line breaks.
-        """
-        soup = BeautifulSoup(html, "html.parser")
-        lines = []
-        for paragraph in soup.find_all("p"):  # Find all paragraph tags
-            lines.append(paragraph.get_text())  # Extract text from each paragraph
-        return "\n".join(lines)
+def add_styled_tags(text, styles):
+    # Sort the styles list by start position in reverse order
+    # This ensures that inserting tags does not affect subsequent positions
+    styles = sorted(styles, key=lambda x: x["start"], reverse=True)
 
+    # Initialize a copy of the text to modify
+    modified_text = text
 
-def add_styled_tags(chapter_text, styled_words):
-    """
-    Add <Italics> and <Bold> tags before and after the respective styled text in the chapter_text.
-    """
-    offset = 0  # To account for the changing positions due to added tags
-    for word in styled_words:
-        start = word['start'] + offset
-        end = word['end'] + offset
-        if word['style'] == "Italics":
-            chapter_text = (
-                chapter_text[:start] + "<Italics>" +
-                chapter_text[start:end] + "</Italics>" +
-                chapter_text[end:]
-            )
-            offset += len("<Italics></Italics>")
-        elif word['style'] == "Bold":
-            chapter_text = (
-                chapter_text[:start] + "<Bold>" +
-                chapter_text[start:end] + "</Bold>" +
-                chapter_text[end:]
-            )
-            offset += len("<Bold></Bold>")
-    return chapter_text
+    for style_entry in styles:
+        start = style_entry["start"]
+        end = style_entry["end"]
+        style = style_entry["style"]
+
+        if style == "Italics":
+            # Insert </Italics> at the end position
+            modified_text = modified_text[:end] + "</Italics>" + modified_text[end:]
+            # Insert <Italics> at the start position
+            modified_text = modified_text[:start] + "<Italics>" + modified_text[start:]
+        elif style == "Bold":
+            # Insert </Bold> at the end position
+            modified_text = modified_text[:end] + "</Bold>" + modified_text[end:]
+            # Insert <Bold> at the start position
+            modified_text = modified_text[:start] + "<Bold>" + modified_text[start:]
+
+    return modified_text
