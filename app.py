@@ -160,7 +160,7 @@ if st.session_state['authenticated'] and not st.session_state['reset_mode']:
                     # Process chapters
                     for chapter in chapters:
                         st.write(f"Processing Chapter {chapter['number']}")
-                        response = get_response(chapter['text'], font_style)
+                        response = get_response(chapter['text'], chapter['title'], font_style)
                         html_pth = save_response(response, chapter['number'])
                         # Read the saved HTML content
                         with open(html_pth, 'r', encoding='utf-8') as f:
