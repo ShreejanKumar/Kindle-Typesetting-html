@@ -46,7 +46,7 @@ def get_response(chapter, title, font_style):
     18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
     19. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
     
-        Here is the target chapter: <<CHAPTER_TEXT>>
+        Here is the target chapter text. Do not include any of this in the heading. The chapter title is already given above. Directly start the p tag here.: <<CHAPTER_TEXT>>
     """
         prompt = prompt_template.replace("<<CHAPTER_TEXT>>", chapter).replace("<<font_style>>", font_style)
         chat_completion = client.chat.completions.create(
@@ -95,7 +95,7 @@ def get_response(chapter, title, font_style):
     18.When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
     19. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
     
-        Here is the target chapter: <<CHAPTER_TEXT>>
+        Here is the target chapter text. Do not include any of this in the heading. The chapter title is already given above. Directly start the p tag here.: <<CHAPTER_TEXT>>
     """
         prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style)
 
@@ -204,7 +204,7 @@ def get_response(chapter, title, font_style):
     18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
     19. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
     
-        Here is the target chapter: <<CHAPTER_TEXT>> """
+        Here is the target chapter text. Do not include any of this in the heading. The chapter title is already given above. Directly start the p tag here.: <<CHAPTER_TEXT>> """
         prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style)
 
         chat_completion_1 = client.chat.completions.create(
@@ -353,7 +353,7 @@ def get_response(chapter, title, font_style):
     18. When the text contains footnotes, include a superscript reference in the paragraph (e.g., `<sup><a href="#fn1">1</a></sup>`). At the end of the chapter, add a `div` with a class of `footnotes` that lists the footnotes using an ordered list (`<ol>`). Use the `id` attribute to link the superscripts in the text to the corresponding footnotes. Each footnote should include a backlink (`<a href="#fnref1">↩</a>`) to the reference in the text. It is not necessary that the text always contains footnotes. Use this only when needed and not everytime.
     19. In the text italicize whatever text you find in between these tags <Italics> </Italics> and bold whatever text you find in between these tags <Bold> </Bold> by adding the <i> and <b> tags of html.
     
-        Here is the target chapter: <<CHAPTER_TEXT>> """
+        Here is the target chapter text. Do not include any of this in the heading. The chapter title is already given above. Directly start the p tag here.: <<CHAPTER_TEXT>> """
         prompt_1 = prompt_template_1.replace("<<CHAPTER_TEXT>>", first_part).replace("<<font_style>>", font_style)
 
         chat_completion_1 = client.chat.completions.create(
