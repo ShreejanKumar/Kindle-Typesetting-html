@@ -1,11 +1,12 @@
 import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from main import get_response, save_response, html_to_plain_text_with_newlines, extract_styled_text_with_positions, add_styled_tags
+from main import get_response, save_response, html_to_plain_text_with_newlines, extract_styled_text_with_positions_italics, add_italics_tags, add_bold_tags, extract_styled_text_with_positions_bold
 from streamlit_quill import st_quill
 import json
 
 # Setup Google Sheets API client using credentials from secrets
+
 def get_gspread_client():
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
     creds_dict = {
@@ -23,6 +24,7 @@ def get_gspread_client():
     creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
     client = gspread.authorize(creds)
     return client
+
 
 # Access the Google Sheet
 def get_google_sheet(client, spreadsheet_url):
@@ -130,8 +132,10 @@ if st.session_state['authenticated'] and not st.session_state['reset_mode']:
             chapter_title = st.text_area(f'Chapter {i} Title:', value=f'Chapter {i}', key=f'chapter_title_{i}')
             raw_data = st_quill(placeholder="Enter your text with formatting", key=f'editor_{i}', html=True)
             chapter_text = html_to_plain_text_with_newlines(raw_data)
-            styled_words = extract_styled_text_with_positions(raw_data)
-            chapter_text_with_styles = add_styled_tags(chapter_text, styled_words)
+            styled_words_italics = extract_styled_text_with_positions_italics(raw_data)
+            chapter_text_with_italics = add_italics_tags(chapter_text, styled_words_italics)
+            styled_words_bold = extract_styled_text_with_positions_bold(raw_data, chapter_text_with_italics)
+            chapter_text_with_styles = add_bold_tags(chapter_text_with_italics, styled_words_bold)
             chapters.append({
                 'title': chapter_title,
                 'text': chapter_text_with_styles,
