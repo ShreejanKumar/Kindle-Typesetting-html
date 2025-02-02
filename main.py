@@ -57,6 +57,7 @@ def get_response(chapter, title, font_style):
                 }
             ],
             model=model,
+            temperature = 0
         )
     
         response = chat_completion.choices[0].message.content
