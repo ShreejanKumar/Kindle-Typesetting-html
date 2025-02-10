@@ -136,10 +136,12 @@ if st.session_state['authenticated'] and not st.session_state['reset_mode']:
             chapter_text_with_italics = add_italics_tags(chapter_text, styled_words_italics)
             styled_words_bold = extract_styled_text_with_positions_bold(raw_data, chapter_text_with_italics)
             chapter_text_with_styles = add_bold_tags(chapter_text_with_italics, styled_words_bold)
+            footnotes = st.checkbox("Contains Footnotes?", value=False,  key=f'footnotes_{i}')
             chapters.append({
                 'title': chapter_title,
                 'text': chapter_text_with_styles,
-                'number': i
+                'number': i,
+                'footnotes' : footnotes
             })
 
     # Generate HTML Button
