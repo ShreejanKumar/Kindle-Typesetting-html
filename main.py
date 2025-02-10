@@ -592,74 +592,101 @@ def html_to_plain_text_with_newlines(html):
         return "\n".join(lines)
 
 
-def extract_styled_text_with_positions(html):
+def extract_styled_text_with_positions_italics(html):
     """
-    Extract styled text (italicized <em> and bold <strong>) from the HTML along with their positions.
+    Extract styled text (italicized <em>) from the HTML along with their positions.
     Returns a list of dictionaries containing the text, style, and its start and end positions.
     """
     soup = BeautifulSoup(html, "html.parser")
     plain_text = html_to_plain_text_with_newlines(html)
     styled_text_positions = []
-    # Extract italicized text
-    for em in soup.find_all("em"):
-        italic_text = em.get_text()
-        start_idx = plain_text.find(italic_text)
-        while start_idx != -1:
-            match_plain = plain_text[start_idx:start_idx + len(italic_text)]
-            if match_plain == italic_text:
+
+    # Track the current position in the plain text
+    current_position = 0
+
+    # Traverse the HTML content to find <em> tags
+    for element in soup.descendants:
+        if element.name == "em":  # Check if the current element is an <em> tag
+            italic_text = element.get_text()
+            start_idx = plain_text.find(italic_text, current_position)
+            if start_idx != -1:
                 styled_text_positions.append({
                     "text": italic_text,
                     "style": "Italics",
                     "start": start_idx,
                     "end": start_idx + len(italic_text)
                 })
-                break
-            start_idx = plain_text.find(italic_text, start_idx + 1)
+                # Update the current position to avoid re-matching
+                current_position = start_idx + len(italic_text)
 
-    # Extract bold text
-    for strong in soup.find_all("strong"):
-        bold_text = strong.get_text()
-        start_idx = plain_text.find(bold_text)
-        while start_idx != -1:
-            match_plain = plain_text[start_idx:start_idx + len(bold_text)]
-            if match_plain == bold_text:
+    return styled_text_positions
+
+
+
+def extract_styled_text_with_positions_bold(html, plain_text):
+    """
+    Extract styled text (italicized <em> and bold <strong>) from the HTML along with their positions.
+    Returns a list of dictionaries containing the text, style, and its start and end positions.
+    """
+    soup = BeautifulSoup(html, "html.parser")
+    # plain_text = html_to_plain_text_with_newlines(html)
+    styled_text_positions = []
+
+    # Track the current position in the plain text
+    current_position = 0
+
+    # Traverse the HTML content to find <em> tags
+    for element in soup.descendants:
+        if element.name == "strong":  # Check if the current element is an <em> tag
+            bold_text = element.get_text()
+            start_idx = plain_text.find(bold_text, current_position)
+            if start_idx != -1:
                 styled_text_positions.append({
                     "text": bold_text,
                     "style": "Bold",
                     "start": start_idx,
                     "end": start_idx + len(bold_text)
                 })
-                break
-            start_idx = plain_text.find(bold_text, start_idx + 1)
+                # Update the current position to avoid re-matching
+                current_position = start_idx + len(bold_text)
 
-    # Sort by start position to ensure correct processing order
-    styled_text_positions.sort(key=lambda x: x['start'])
     return styled_text_positions
 
-    
 
-def add_styled_tags(text, styles):
-    # Sort the styles list by start position in reverse order
-    # This ensures that inserting tags does not affect subsequent positions
-    styles = sorted(styles, key=lambda x: x["start"], reverse=True)
 
-    # Initialize a copy of the text to modify
-    modified_text = text
+def add_italics_tags(chapter_text, italicized_words):
+    """
+    Add <Italics> tags before and after the italicized text in the chapter_text.
+    """
+    offset = 0  # To account for the changing positions due to added tags
+    for word in italicized_words:
+        start = word['start'] + offset
+        end = word['end'] + offset
+        chapter_text = (
+            chapter_text[:start] + "<Italics>" +
+            chapter_text[start:end] + "</Italics>" +
+            chapter_text[end:]
+        )
+        # Update the offset based on the added tags
+        offset += len("<Italics></Italics>")
+    return chapter_text
 
-    for style_entry in styles:
-        start = style_entry["start"]
-        end = style_entry["end"]
-        style = style_entry["style"]
 
-        if style == "Italics":
-            # Insert </Italics> at the end position
-            modified_text = modified_text[:end] + "</Italics>" + modified_text[end:]
-            # Insert <Italics> at the start position
-            modified_text = modified_text[:start] + "<Italics>" + modified_text[start:]
-        elif style == "Bold":
-            # Insert </Bold> at the end position
-            modified_text = modified_text[:end] + "</Bold>" + modified_text[end:]
-            # Insert <Bold> at the start position
-            modified_text = modified_text[:start] + "<Bold>" + modified_text[start:]
 
-    return modified_text
+
+def add_bold_tags(chapter_text, bold_words):
+    """
+    Add <Bold> tags before and after the italicized text in the chapter_text.
+    """
+    offset = 0  # To account for the changing positions due to added tags
+    for word in bold_words:
+        start = word['start'] + offset
+        end = word['end'] + offset
+        chapter_text = (
+            chapter_text[:start] + "<Bold>" +
+            chapter_text[start:end] + "</Bold>" +
+            chapter_text[end:]
+        )
+        # Update the offset based on the added tags
+        offset += len("<Bold></Bold>")
+    return chapter_text
