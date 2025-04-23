@@ -1,1 +1,1 @@
-Epub creator
+Typeseset your manuscript for kindle ebooks
